@@ -1,0 +1,171 @@
+ 2 定位：
+id，name，class_name，xpath，css_selector，partial_link_text，link_text，tag_name
+
+浏览器事件：
+driver.get_window_size()	获取浏览器大小
+driver.set_window_size(102,500)设置浏览器大小
+driver.refresh()		刷新
+driver.back()		后退
+driver.forward()		前进
+driver.minimize_window()	浏览器最小化
+driver.maximize_window()	浏览器最大化
+driver.quit		关闭驱动
+driver.close		关闭浏览器页面
+
+鼠标事件：
+click()：			左键单击
+context_click()：		右击
+double_click()：		双击
+drag_and_drop()：		拖动
+move_to_element()：	鼠标悬停
+click_and_hold ()：		左键按下不释放
+drag_and_drop_by_offset	拖拽
+release			释放鼠标
+
+键盘事件：
+send_keys(Kyes.ENTER)	回车
+send_kyes(Kyes.BACK_SPACE)  退格键
+Keys.PAGE_UP		翻页键上
+Keys.PAGE_DOWN		翻页键下
+Keys.ENTER		回车键
+Keys.SHIFT		大小写转换键
+Keys.SPACE		空格键
+Keys.ESCAPE		返回键
+Keys.CONTROL('a')		全选
+
+3种等待时间：
+sleep(2)  强制等待
+driver.implicitly_wait(5)  隐式等待
+WebDriverWait(driver,10,1).until(EC.present_of_element_located((BY.ID,""))).click    显示等待
+
+
+多窗口：
+driver.switch_to.window(driver.window_handles[-1])
+
+iframe框架：
+driver.switch_to.frame(driver.find_element_by_id(""))
+
+下拉列表：
+a=Select(driver.find_element_by_id(""))
+a.select_by_index(2)
+a.select_by_value("2")
+
+弹窗：
+b=driver.switch_to.alert
+b.accept()  /  b.dismiss
+b.send_keys("")
+
+	
+滚动条：
+driver.execute_script('window.scrollTo(0,3000)')	         指定到某地
+driver.execute_script('window.scrollTo(0,0)')		指定到顶部
+driver.execute_script('widow.scrollTo(0,document.body.scrollHeight)')	指定到底部
+
+
+发送邮件
+import yagmail,time
+a=yagmail.SMTP(user="43946116@qq.com",
+               password="qruyxdpkrngabjbc",
+               host="smtp.qq.com",
+               port=465)
+a.send(to="43946116@qq.com",
+       subject="月考升班",
+       contents=["yk.html"])
+
+生成报告
+import unittest,HTMLTestRunner_cn
+suite = unittest.defaultTestLoader.discover(start_dir='../', pattern='test_case.py')
+baogao = HTMLTestRunner_cn.HTMLTestRunner(open("lvmama.html", "wb"),
+                                          title='驴妈妈测试用例的执行报告',
+                                          description="执行了PO+Unittest框架的用例")
+baogao.run(suite)
+
+
+logging日志
+import logging
+
+class Rizhi():
+    def Rizhi(self,filename):
+        logger=logging.getLogger()
+        logger.setLevel(logging.INFO)
+
+        fh=logging.FileHandler(filename,mode='a',encoding='utf-8')
+        fh.setLevel(logging.INFO)
+
+        f=logging.Formatter('%(asctime)s---%(filename)s---%(funcName)s---%(levelname)s---%(lineno)d---%(message)s')
+        fh.setFormatter(f)
+
+        logger.addHandler(fh)
+if __name__ == '__main__':
+    a=Rizhi()
+    a.Rizhi('1.log')
+    logging.info('我是info')
+
+rz = logging.basicConfig(level=logging.DEBUG,
+		      format="%(levelname)s  %(filename)s  %(asctime)s %(message)s  %(lineno)d"
+		      filename="suning.log",
+		      filename="a+")
+
+logging.info("start case")
+
+
+logging.info("case end")
+
+
+
+
+
+from excle_py import ParaExcle
+wjlujing = "文件路径"
+sheetming = "单元名"
+pe = ParaExcle(wjlujing,sheetming)
+from ddt import ddt,data,unpack
+@ddt(*pe.getDataFromsheet_mul())
+@unpack
+变量
+
+
+
+
+
+导包:
+from selenium.webdriver.common.keys import Keys  键盘包
+from selenium.webdriver.common.action_chains import ActionChains	鼠标包
+from selenium.webdriver.common.by import By		定位包
+from selenium.webdriver.support.ui import Select		下拉框包
+from selenium.webdriver.support.ui import WebDriverWait	显示等待时间包
+from time import sleep				强制等待时间
+
+
+
+
+import logging
+
+class lo():
+    def __init__(self,filename):
+        self.filename = filename
+    def lo_2(self):
+        a = logging.getLogger()
+        a.setLevel(logging.INFO)
+
+
+        b = logging.FileHandler(self.filename,mode="a",encoding="utf-8")
+        b.setLevel(logging.INFO)
+
+        c = logging.StreamHandler()
+        c.setLevel(logging.INFO)
+
+        d = logging.Formatter("%(asctime)s %(filename)s %(lineno)d %(levelname)s %(message)s")
+        b.setFormatter(d)
+        c.setFormatter(d)
+
+        a.addHandler(b)
+        a.addHandler(c)
+
+if __name__ == '__main__':
+    x = lo("sn.log")
+    x.lo_2()
+
+    logging.info("开始")
+    logging.warning("warining")
+    logging.debug("结束")
