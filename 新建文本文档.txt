@@ -1,0 +1,6 @@
+从githun拉代码到本地
+git clone ++
+本地上传github
+git add .
+git commit -m "rizhi"
+git push
